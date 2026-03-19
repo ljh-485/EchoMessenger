@@ -74,6 +74,7 @@
             txtInsert.TabIndex = 3;
             txtInsert.Text = "여기에 입력하세요";
             txtInsert.TextChanged += textBox1_TextChanged;
+            txtInsert.KeyDown += txtInsert_KeyDown;
             // 
             // Form1
             // 
