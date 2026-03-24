@@ -37,35 +37,7 @@ namespace EchoMessenger
                 lstTotalMessege.TopIndex = lstTotalMessege.Items.Count - 1;
         }
 
-        // [1번 기능] 선택 항목 삭제 버튼 클릭 이벤트
-        private void btnDeleteSelected_Click(object sender, EventArgs e)
-        {
-            // 선택된 항목의 인덱스 확인 (-1은 선택되지 않았음을 의미)
-            if (lstTotalMessege.SelectedIndex != -1)
-            {
-                lstTotalMessege.Items.RemoveAt(lstTotalMessege.SelectedIndex);
-                UpdateMessageCount(); // 개수 업데이트
-            }
-            else
-            {
-                // 선택하지 않고 삭제 버튼을 눌렀을 때 예외 처리(안내)
-                MessageBox.Show("삭제할 메시지를 먼저 선택해주세요.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
-        // [2번 기능] 전체 초기화 버튼 클릭 이벤트
-        private void btnClearAll_Click(object sender, EventArgs e)
-        {
-            // 사용자에게 정말 지울 것인지 한 번 더 물어보는 것이 좋습니다.
-            DialogResult result = MessageBox.Show("대화 기록을 모두 삭제하시겠습니까?", "초기화 확인", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
-            {
-                lstTotalMessege.Items.Clear();
-                UpdateMessageCount();
-                txtInsert.Focus();
-            }
-        }
+      
 
         private void UpdateMessageCount()
         {
@@ -90,6 +62,26 @@ namespace EchoMessenger
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             // 아무 내용도 없어도 됩니다.
+        }
+
+        private void bntDeleteSelected_Click(object sender, EventArgs e)
+        {
+            // 선택된 항목의 인덱스 확인 (-1은 선택되지 않았음을 의미)
+            if (lstTotalMessege.SelectedIndex != -1)
+            {
+                lstTotalMessege.Items.RemoveAt(lstTotalMessege.SelectedIndex);
+                UpdateMessageCount(); // 개수 업데이트
+            }
+            else
+            {
+                // 선택하지 않고 삭제 버튼을 눌렀을 때 예외 처리(안내)
+                MessageBox.Show("삭제할 메시지를 먼저 선택해주세요.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void bntClearAll_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

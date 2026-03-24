@@ -33,6 +33,8 @@
             bntSpend = new Button();
             txtInsert = new TextBox();
             lblCount = new Label();
+            bntDeleteSelected = new Button();
+            bntClearAll = new Button();
             SuspendLayout();
             // 
             // label1
@@ -86,12 +88,34 @@
             lblCount.Size = new Size(0, 37);
             lblCount.TabIndex = 4;
             // 
+            // bntDeleteSelected
+            // 
+            bntDeleteSelected.Location = new Point(1021, 123);
+            bntDeleteSelected.Name = "bntDeleteSelected";
+            bntDeleteSelected.Size = new Size(222, 46);
+            bntDeleteSelected.TabIndex = 5;
+            bntDeleteSelected.Text = "삭제";
+            bntDeleteSelected.UseVisualStyleBackColor = true;
+            bntDeleteSelected.Click += bntDeleteSelected_Click;
+            // 
+            // bntClearAll
+            // 
+            bntClearAll.Location = new Point(1021, 175);
+            bntClearAll.Name = "bntClearAll";
+            bntClearAll.Size = new Size(222, 46);
+            bntClearAll.TabIndex = 6;
+            bntClearAll.Text = "대화 기록 삭제";
+            bntClearAll.UseVisualStyleBackColor = true;
+            bntClearAll.Click += bntClearAll_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(14F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Gold;
             ClientSize = new Size(1332, 789);
+            Controls.Add(bntClearAll);
+            Controls.Add(bntDeleteSelected);
             Controls.Add(lblCount);
             Controls.Add(txtInsert);
             Controls.Add(bntSpend);
@@ -110,5 +134,7 @@
         private Button bntSpend;
         private TextBox txtInsert;
         private Label lblCount;
+        private Button bntDeleteSelected;
+        private Button bntClearAll;
     }
 }
