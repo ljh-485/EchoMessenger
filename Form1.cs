@@ -81,7 +81,15 @@ namespace EchoMessenger
 
         private void bntClearAll_Click(object sender, EventArgs e)
         {
-            
+            // 사용자에게 정말 지울 것인지 한 번 더 물어보는 것이 좋습니다.
+            DialogResult result = MessageBox.Show("대화 기록을 모두 삭제하시겠습니까?", "초기화 확인", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                lstTotalMessege.Items.Clear();
+                UpdateMessageCount();
+                txtInsert.Focus();
+            }
         }
     }
 }
