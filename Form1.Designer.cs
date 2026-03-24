@@ -32,6 +32,7 @@
             lstTotalMessege = new ListBox();
             bntSpend = new Button();
             txtInsert = new TextBox();
+            lblCount = new Label();
             SuspendLayout();
             // 
             // label1
@@ -76,12 +77,22 @@
             txtInsert.TextChanged += textBox1_TextChanged;
             txtInsert.KeyDown += txtInsert_KeyDown;
             // 
+            // lblCount
+            // 
+            lblCount.AutoSize = true;
+            lblCount.Font = new Font("맑은 고딕", 10.125F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            lblCount.Location = new Point(756, 577);
+            lblCount.Name = "lblCount";
+            lblCount.Size = new Size(0, 37);
+            lblCount.TabIndex = 4;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(14F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Gold;
             ClientSize = new Size(1332, 789);
+            Controls.Add(lblCount);
             Controls.Add(txtInsert);
             Controls.Add(bntSpend);
             Controls.Add(lstTotalMessege);
@@ -98,5 +109,6 @@
         private ListBox lstTotalMessege;
         private Button bntSpend;
         private TextBox txtInsert;
+        private Label lblCount;
     }
 }

@@ -5,6 +5,8 @@ namespace EchoMessenger
         public Form1()
         {
             InitializeComponent();
+            // 시작할 때 메시지 개수를 0으로 초기화
+            UpdateMessageCount();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -15,26 +17,39 @@ namespace EchoMessenger
 
         private void bntSpend_Click(object sender, EventArgs e)
         {
-            string typed_msg = txtInsert.Text;
-           
-            
+            // 1. 앞뒤 공백 제거 (Trim)
+            string typed_msg = txtInsert.Text.Trim();
 
-            // 1. .Trim()을 사용하여 앞뒤 공백을 제거한 텍스트를 가져옵니다.
-            typed_msg = txtInsert.Text.Trim();
-
-            // 2. 내용이 비어있거나 공백만 있다면 전송하지 않고 종료(return)합니다.
+            // 2. 빈 문자열이나 공백만 있을 경우 차단
             if (string.IsNullOrWhiteSpace(typed_msg))
             {
-                txtInsert.Clear(); // 스페이스바만 쳤을 경우를 대비해 칸을 비워줌
+                txtInsert.Clear();
                 return;
             }
 
-            // 3. 정상적인 내용이 있을 때만 리스트에 추가
-            lstTotalMessege.Items.Add(typed_msg);
+            // 3. 현재 시간 구하기 (ex. 13:04:34)
+            string currentTime = DateTime.Now.ToString("HH:mm:ss");
 
+            // 4. [시간]메시지 형식으로 딱 '한 번만' 리스트에 추가합니다.
+            // 기존에 있던 lstTotalMessege.Items.Add(typed_msg); 코드는 지워야 합니다.
+            lstTotalMessege.Items.Add($"[{currentTime}] {typed_msg}");
+
+            // 5. 입력창 비우기 및 포커스
             txtInsert.Clear();
-            //입력창으로 커서를 다시 보냅니다.
             txtInsert.Focus();
+
+            // 6. 하단 라벨에 총 메시지 개수 업데이트
+            UpdateMessageCount();
+
+            // 7. (선택사항) 새 메시지가 추가되면 스크롤을 맨 아래로 내림
+            lstTotalMessege.TopIndex = lstTotalMessege.Items.Count - 1;
+        }
+
+        // 메시지 개수를 업데이트하는 별도의 메서드 (중복 방지)
+        private void UpdateMessageCount()
+        {
+            // lblCount는 하단에 배치한 Label의 Name입니다.
+            lblCount.Text = $"총 메시지 개수: {lstTotalMessege.Items.Count}개";
         }
 
         private void lstTotalMessege_SelectedIndexChanged(object sender, EventArgs e)
